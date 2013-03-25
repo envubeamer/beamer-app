@@ -6,7 +6,6 @@ var Application 	 = require('application')
   , UploadView	 	 = require('views/upload_view')
   , PairingView 	 = require('views/pairing_view')
   , BrowserView		 = require('views/browser_view')
-  , ShareView		 = require('views/share_view')
   , ViewerView 		 = require('views/viewer_view')
 
 module.exports = Support.SwappingRouter.extend({
@@ -23,7 +22,6 @@ module.exports = Support.SwappingRouter.extend({
         'upload': 'upload',
         'pairing': 'pairing',
         'browser': 'browser',
-        'share': 'share',
         'beam/:id': 'beam'
     },
     
@@ -53,10 +51,6 @@ module.exports = Support.SwappingRouter.extend({
     
     browser: function() {
     	this.swap(new BrowserView());
-    },
-    
-    share: function() {
-    	this.swap(new ShareView());
     },
 
     beam: function(id) {

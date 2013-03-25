@@ -8,8 +8,6 @@ module.exports = View.extend({
     template: template,
     
     events: {
-		//"click a.content": "test",
-		"click .span12 div.beamer-toolbar-share": "shareContent",
 	},
 	
 	initialize: function() {
@@ -45,8 +43,6 @@ module.exports = View.extend({
 		// Only invoke the gallery if there are any images
 		if (this.$("#gallery li").length > 0) {
 			var instance = this.$("#gallery a").photoSwipe({
-				enableMouseWheel: false,
-				enableKeyboard: false,
 				getToolbar: function() {
 					return '<div class="ps-toolbar-close"><div class="ps-toolbar-content"></div></div><div class="ps-toolbar-play"><div class="ps-toolbar-content"></div></div><div class="ps-toolbar-previous"><div class="ps-toolbar-content"></div></div><div class="ps-toolbar-next"><div class="ps-toolbar-content"></div></div><div class="beamer-toolbar-share"><div class="ps-toolbar-content"></div></div>';
 				}
@@ -73,15 +69,6 @@ module.exports = View.extend({
 				shareEl = null;
 			});
 		}
-	},
-	
-	shareContent: function(event) {
-		console.log('Clicked share content');
-    	
-    	// Do not trigger the default action of the event
-		event.preventDefault();
-		
-		Application.router.navigate('share', {trigger: true});
 	},
 	
 })
