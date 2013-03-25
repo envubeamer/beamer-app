@@ -6,10 +6,13 @@ var View     = require('./view')
 
 module.exports = View.extend({
     template: template,
+    viewData: {imageUrl: "", beamed: false}, 
 
     initialize: function(options) {
+
+        this.parseData = _.bind(this.parseData, this)
     	this.collection = new Photos();
-    	this.collection.on("reset", this.render, this);
+    	this.collection.on("reset", this.parseData, this);
 
     	var query = {
     		token: options.photoToken
@@ -30,9 +33,28 @@ module.exports = View.extend({
     	var self = this;
     	this.interval = setInterval(function() {
     		self.collection.fetch(fetchParams);
-    	}, 5000);
+    	}, 1000);
 
     },
+
+    parseData: function(){
+        var model = this.collection.at(0);
+        if(model) {
+            var newViewData = {imageUrl: "", beamed: true}
+
+            if(model.get("file").variants.large.status == "complete") {
+                newViewData["imageUrl"] = Application.config.apiUrl + model.get("file").variants.large.url;    
+               
+                if  (this.viewData["imageUrl"] != newViewData["imageUrl"]){
+                    this.viewData = newViewData;
+                    this.render();
+                } 
+            }
+        }
+
+        return this
+    },
+
 
     afterRender: function() {
     	var model = this.collection.at(0);
@@ -43,18 +65,6 @@ module.exports = View.extend({
     },
 
     getRenderData: function() {
-    	var data = {imageUrl: "", beamed: false}
-    	var model = this.collection.at(0);
-    	if(model) {
-    		clearInterval(this.interval);
-    		if(model.get("file").variants.large.status == "complete") {
-    			data["imageUrl"] = Application.config.apiUrl + model.get("file").variants.large.url;	
-    		} else {
-    			data["imageUrl"] = Application.config.apiUrl + model.get("file").url;
-    		}
-    		data["beamed"] = true
-    	}
-
-    	return data
+        return this.viewData;
     }
 });
