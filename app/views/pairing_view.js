@@ -23,7 +23,7 @@ module.exports = View.extend({
     afterRender: function() {
     	var self = this
     	setTimeout(function() {
-    		$('#qr-code').qrcode('http://' + window.location.hostname + ':3333/#beam/' + self.token)
+    		$('#qr-code').qrcode('http://' + window.location.hostname + '#beam/' + self.token)
             $('.fileupload').fileupload()
     	}, 10)
     	
