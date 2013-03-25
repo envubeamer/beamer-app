@@ -28,7 +28,7 @@ module.exports = View.extend({
 		{
 			success: function(model, response, options) {
 				console.log("User saved successfully!");
-				Application.router.navigate('', {trigger: true});
+				Application.router.navigate('users/' + model.get('id'), {trigger: true});
 			},
 			error: function(model, xhr, options) {
 				console.log("User creation failed!");

@@ -48,5 +48,15 @@ module.exports = View.extend({
 		event.preventDefault();
 		
 		Application.router.navigate('pairing', {trigger: true});
+    },
+
+
+    logout: function(event) {
+        console.log('Clicked logout');
+        
+        // Do not trigger the default action of the event
+        event.preventDefault();
+        
+        Application.router.navigate('home', {trigger: true});
     }
 })
