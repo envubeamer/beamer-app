@@ -13,8 +13,8 @@ module.exports = View.extend({
 	},
 	
 	initialize: function() {
-		this.model = new Photo();
-    	this.fileModel = new File();
+		this.model = new Content();
+		this.fileModel = new File();
 	},
 	
 	afterRender: function() {
@@ -34,7 +34,7 @@ module.exports = View.extend({
                 id: ""
             },
             fileName: fileData.name
-        };
+        }
 
         var file = this.fileModel;
 
@@ -66,7 +66,7 @@ module.exports = View.extend({
     			id: file.id,
     			objectType: "files"
     		}
-    	});
+    	})
     },
 	
 })

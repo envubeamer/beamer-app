@@ -1,6 +1,6 @@
 var View     		= require('./view')
   , template 		= require('./templates/browser')
-  , PhotoCollection = require('../models/photos')
+  , ContentCollection = require('../models/content_collection')
   , Application 	= require('application')
 
 module.exports = View.extend({
@@ -10,9 +10,9 @@ module.exports = View.extend({
     events: {
 	},
 	
-	initialize: function(options) {
+	initialize: function() {
 		this.token = options.token;
-		this.collection = new PhotoCollection();
+		this.collection = new ContentCollection();
     	this.collection.on('reset', this.render, this);
     	
     	var fetchParams = {

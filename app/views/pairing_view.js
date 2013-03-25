@@ -13,15 +13,17 @@ module.exports = View.extend({
 
     initialize: function() {
     	this.token = (Math.random() * Math.random()).toString(36).substr(2,26);
-        shareUrl = 'http://' + window.location.hostname + '#beam/' + this.token;
+		shareUrl = 'http://envu-beamer-app.herokuapp.com/' + '#beam/' + this.token;
     },
 
     afterRender: function() {
     	setTimeout(function() {
+
 			$('#qr-code').qrcode(shareUrl);
 	        $('#share-url').val(shareUrl);
     	}, 10);
     },
+
     
     browseContent: function(event) {
     	console.log('Clicked browse content');
@@ -30,5 +32,10 @@ module.exports = View.extend({
 		event.preventDefault();
 		
 		Application.router.navigate('browser/' + this.token, {trigger: true});
+    },
+
+    getRenderData: function() {
+        var data = {shareurl: shareUrl};
+        return data
     },
 })
