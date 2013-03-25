@@ -19,7 +19,7 @@ module.exports = View.extend({
     	this.model = new Photo()
     	this.model.on('sync', this.redirect, this)
     	this.fileModel = new File()
-        shareUrl = 'http://' + window.location.hostname + '#beam/' + this.token;
+        shareUrl = 'http://envu-beamer-app.herokuapp.com/' + '#beam/' + this.token;
     },
 
     afterRender: function() {
@@ -91,5 +91,10 @@ module.exports = View.extend({
 		event.preventDefault();
 		
 		Application.router.navigate('browser', {trigger: true});
+    },
+
+    getRenderData: function() {
+        var data = {shareurl: shareUrl};
+        return data
     },
 })
