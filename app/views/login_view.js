@@ -29,7 +29,7 @@ module.exports = View.extend({
 			success: function(model, response, options) {
 				console.log("User authenticated successfully!");
 				// Store session token in local storage
-				localStorage.setItem('session', model.get('sessionToken'));
+				localStorage.setItem('sessionToken', model.get('sessionToken'));
 				Application.router.navigate('users/' + model.get('user').get('id'), {trigger: true});
 			},
 			error: function(model, xhr, options) {
