@@ -33,7 +33,8 @@ module.exports = View.extend({
 		var data = {'content': []};
 		this.collection.each(function (content) {
 			var contentData = {};
-			contentData.url = Application.config.apiUrl + content.get('file').variants.thumbnail.url;
+			contentData.thumbnailUrl = Application.config.apiUrl + content.get('file').variants.thumbnail.url;
+			contentData.originalUrl = Application.config.apiUrl + content.get('file').url;
 			data.content.push(contentData);
 		});
 
