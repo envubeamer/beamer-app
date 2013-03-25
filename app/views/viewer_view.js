@@ -1,7 +1,7 @@
 var View     = require('./view')
   , template = require('./templates/viewer')
-  , Photo	 = require('../models/photo')
-  , Photos	 = require('../models/photos')
+  , Content  = require('../models/content_model')
+  , ContentCollection = require('../models/content_collection')
   , Application = require('application')
 
 module.exports = View.extend({
@@ -11,7 +11,7 @@ module.exports = View.extend({
     initialize: function(options) {
 
         this.parseData = _.bind(this.parseData, this)
-    	this.collection = new Photos();
+    	this.collection = new Content();
     	this.collection.on("reset", this.parseData, this);
 
     	var query = {

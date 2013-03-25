@@ -1,6 +1,6 @@
 var View     = require('./view')
   , template = require('./templates/pairing')
-  , Photo	 = require('../models/photo')
+  , Content	 = require('../models/content_model')
   , File 	 = require('../models/file')
   , Application = require('application')
 
@@ -16,7 +16,7 @@ module.exports = View.extend({
 
     initialize: function() {
     	this.token = (Math.random() * Math.random()).toString(36).substr(2,26)
-    	this.model = new Photo()
+    	this.model = new Content()
     	this.model.on('sync', this.redirect, this)
     	this.fileModel = new File()
         shareUrl = 'http://envu-beamer-app.herokuapp.com/' + '#beam/' + this.token;
@@ -55,7 +55,7 @@ module.exports = View.extend({
 
         var data = {
             object: {
-                objectType: "objects.photos",
+                objectType: "objects.content",
                 id: ""
             },
             fileName: fileData.name
