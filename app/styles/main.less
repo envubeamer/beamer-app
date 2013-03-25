@@ -2,9 +2,26 @@ body {
 
 }
 
+
 .navbar {
-padding-bottom: 40px;
+	padding-bottom: 40px;
 }
+
+
+/** Fixing non-sensical padding on body **/
+@media (max-width: 767px) {
+    body {
+        padding: 0;
+    }
+    .container{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+	.navbar {
+		padding-left: 20px;
+	}
+}
+
 
 h1 {
 
@@ -15,7 +32,7 @@ h1 {
 html, body {
 height: 100%;
 }
-.wrapper {
+.container {
 min-height: 100%;
 height: auto !important;
 height: 100%;
@@ -24,15 +41,15 @@ margin: 0 auto -100px;
 .footer, .push {
 height: 100px;
 }
-
 .footer {
 background-image: url(/images/buildingsFooter.png); 
 background-repeat: repeat-x;
 background-position: left bottom;
+border: 0;
 }
 
 
-
+/** Custom Button **/
 .btn-custom {
   background-color: hsl(201, 100%, 27%) !important;
   background-repeat: repeat-x;

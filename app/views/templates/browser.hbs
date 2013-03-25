@@ -3,8 +3,8 @@
 		<h1 class="text-center">Content Browser</h1>
 		<p>Select content to be shared</p>
 		<ul id="gallery" class="gallery">
-			{{#each photos}}
-				<li><a href="{{this.url}}"><img src="{{this.url}}"></a></li>
+			{{#each content}}
+				<li><a href="{{this.originalUrl}}" id="{{this.id}}"><img src="{{this.thumbnailUrl}}"></a></li>
 			{{/each}}
 		</ul>
 	</div>
