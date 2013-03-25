@@ -1,5 +1,5 @@
 var View     = require('./view')
-  , template = require('./templates/beam')
+  , template = require('./templates/viewer')
   , Photo	 = require('../models/photo')
   , Photos	 = require('../models/photos')
   , Application = require('application')

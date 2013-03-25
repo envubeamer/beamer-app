@@ -1,22 +1,65 @@
-var application = require('application')
-var HomeView = require('views/home_view')
-var BeamView = require('views/beam_view')
+var Application 	 = require('application')
+  , HomeView 		 = require('views/home_view')
+  , RegistrationView = require('views/registration_view')
+  , LoginView 		 = require('views/login_view')
+  , UserHomeView 	 = require('views/user_home_view')
+  , UploadView	 	 = require('views/upload_view')
+  , PairingView 	 = require('views/pairing_view')
+  , BrowserView		 = require('views/browser_view')
+  , ShareView		 = require('views/share_view')
+  , ViewerView 		 = require('views/viewer_view')
 
 module.exports = Support.SwappingRouter.extend({
-	el: "#main-content",
-    routes: {
-        '': 'home',
-        'beam/:id': 'beam'
+	
+	initialize: function() {
+		this.el = $('#main-content');
     },
-
-    initialize: function() {
+	
+    routes: {
+    	'': 'home',
+        'registration': 'registration',
+        'login': 'login',
+        'users/:id': 'users',
+        'upload': 'upload',
+        'pairing': 'pairing',
+        'browser': 'browser',
+        'share': 'share',
+        'beam/:id': 'beam'
     },
     
     home: function() {
     	this.swap(new HomeView());
     },
+    
+    registration: function() {
+    	this.swap(new RegistrationView());
+    },
+    
+    login: function() {
+    	this.swap(new LoginView());
+    },
+    
+    users: function(id) {
+    	this.swap(new UserHomeView({userId: id}));
+    },
+    
+    upload: function() {
+    	this.swap(new UploadView());
+    },
+    
+    pairing: function() {
+    	this.swap(new PairingView());
+    },
+    
+    browser: function() {
+    	this.swap(new BrowserView());
+    },
+    
+    share: function() {
+    	this.swap(new ShareView());
+    },
 
     beam: function(id) {
-    	this.swap(new BeamView({photoToken: id}));
+    	this.swap(new ViewerView({photoToken: id}));
     }
 })
