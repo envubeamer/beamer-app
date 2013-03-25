@@ -7,10 +7,11 @@ var View     = require('./view')
 module.exports = View.extend({
     template: template,
     token: null,
+    shareUrl: null,
     
     events: {
     	"change input[type=file]": "onFileUpload",
-    	"click a#browse-content": "browseContent",
+    	"click a#browse-content": "browseContent"
     },
 
     initialize: function() {
@@ -18,15 +19,16 @@ module.exports = View.extend({
     	this.model = new Photo()
     	this.model.on('sync', this.redirect, this)
     	this.fileModel = new File()
+        shareUrl = 'http://' + window.location.hostname + '#beam/' + this.token;
     },
 
     afterRender: function() {
     	var self = this
     	setTimeout(function() {
-    		$('#qr-code').qrcode('http://' + window.location.hostname + '#beam/' + self.token)
-            $('.fileupload').fileupload()
+    		$('#qr-code').qrcode(shareUrl);
+            $('.fileupload').fileupload();
+            $('#share-url').val(shareUrl);
     	}, 10)
-    	
     },
 
     redirect: function(model) {
