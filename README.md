@@ -10,14 +10,20 @@ Beamer app with JavaScript, HTML5 and Enginio backend.
 - `git clone https://github.com/envubeamer/beamer-app.git`
 - `npm install`
 - `brunch watch --server`
-==> Application is serving at local host
+==> Application is serving at [localhost:3333](http://localhost:3333/) and automatically recompiled when sources are changing
 
 
 
-#Deployment
+#Deployment environment
 - Deployed to https://heroku.com/
-- Account: envu.team1@gmail.com
-- Password: The one what is used for Enginio account too
-- Application address: http://fathomless-atoll-7060.herokuapp.com/
+- Account 
+  - Email: envu.team1@gmail.com
+  - Password: The one what is used for engin.io account too
+- Application is visible at: http://envu-beamer-app.herokuapp.com/
 
-
+#Deployment process
+- Install Heroku Toolbelt https://toolbelt.heroku.com/
+- `heroku login` + give there the account email + password when asked 
+- `heroku keys:add`
+- `heroku git:remote -a envu-beamer-app`
+- `git push heroku master`
