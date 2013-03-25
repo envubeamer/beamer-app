@@ -35,6 +35,9 @@ exports.config =
                     'vendor/scripts/composite_view.js',
                     'vendor/scripts/swapping_router.js',
                     
+                    'vendor/scripts/klass.min.js',
+                    'vendor/scripts/code.photoswipe.jquery-3.0.5.js',
+                    
                     # These must come before the rest of the Bootstrap JS becasue of dependencies
                     'vendor/scripts/bootstrap/bootstrap-tooltip.js',
                     'vendor/scripts/bootstrap/bootstrap-transition.js',
@@ -65,7 +68,8 @@ exports.config =
                 before: [
                     'vendor/styles/bootstrap/bootstrap.less',
                     'vendor/styles/font-awesome/font-awesome.less',
-                    'vendor/styles/bootstrap-fileupload/bootstrap-fileupload.css'
+                    'vendor/styles/bootstrap-fileupload/bootstrap-fileupload.css',
+                    'vendor/styles/photoswipe/photoswipe.css',
                 ]
             
         templates:

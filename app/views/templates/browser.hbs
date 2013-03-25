@@ -2,9 +2,10 @@
 	<div class="span12">
 		<h1 class="text-center">Content Browser</h1>
 		<p>Select content to be shared</p>
-		<ul>
-			<li><a href="#" class="content">Content 1</a></li>
-			<li><a href="#" class="content">Content 2</a></li>
+		<ul id="gallery" class="gallery">
+			{{#each photos}}
+				<li><a href="{{this.url}}"><img src="{{this.url}}"></a></li>
+			{{/each}}
 		</ul>
 	</div>
 </div>
