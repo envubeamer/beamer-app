@@ -30,11 +30,11 @@ module.exports = View.extend({
 	},
 	
 	getRenderData: function() {
-		var data = {'photos': []};
-		this.collection.each(function (photo) {
-			var photoData = {};
-			photoData.url = Application.config.apiUrl + photo.get('file').variants.thumbnail.url;
-			data.photos.push(photoData);
+		var data = {'content': []};
+		this.collection.each(function (content) {
+			var contentData = {};
+			contentData.url = Application.config.apiUrl + content.get('file').variants.thumbnail.url;
+			data.content.push(contentData);
 		});
 
 		return data;
