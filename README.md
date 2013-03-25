@@ -8,6 +8,7 @@ Beamer app with JavaScript, HTML5 and Enginio backend.
 - Install node.js from http://nodejs.org/
 - Install brunch.io (a JS app assembler) `npm install -g brunch`
 - `git clone https://github.com/envubeamer/beamer-app.git`
+- `cd beamer-app`
 - `npm install`
 - `brunch watch --server`
 ==> Application is serving at [localhost:3333](http://localhost:3333/) and automatically recompiled when sources are changing
@@ -25,5 +26,5 @@ Beamer app with JavaScript, HTML5 and Enginio backend.
 - Install Heroku Toolbelt https://toolbelt.heroku.com/
 - `heroku login` + give there the account email + password when asked 
 - `heroku keys:add`
-- `heroku git:remote -a envu-beamer-app`
+- Go into your beamer-app repo and there `heroku git:remote -a envu-beamer-app`
 - `git push heroku master`
