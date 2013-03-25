@@ -14,7 +14,6 @@ module.exports = View.extend({
 	
 	initialize: function() {
 		this.model = new Content();
-		this.fileModel = new File();
 	},
 	
 	afterRender: function() {
@@ -22,6 +21,8 @@ module.exports = View.extend({
 	},
 	
 	onFileUpload: function(e) {
+        this.fileModel = new File();
+
         var self = this;
         var fileData = this.$("input[type=file]")[0].files[0];
         var progress = this.$(".progress");
@@ -50,7 +51,7 @@ module.exports = View.extend({
                         file.set(response);
                         self.onFileUploaded(key, file);
                         setTimeout(function() {
-                            progress.removeClass("active");
+                            progress.removeClass("active").addClass("hidden");
                         }, 1000);
                     }
                 });
@@ -61,12 +62,10 @@ module.exports = View.extend({
     
     onFileUploaded: function(key, file) {
     	this.model.save({
-    		//token: this.token,
     		file: {
     			id: file.id,
     			objectType: "files"
     		}
     	})
     },
-	
 })
