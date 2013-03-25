@@ -10,7 +10,8 @@ module.exports = View.extend({
     events: {
 	},
 	
-	initialize: function() {
+	initialize: function(options) {
+		this.token = options.token;
 		this.collection = new PhotoCollection();
     	this.collection.on('reset', this.render, this);
     	

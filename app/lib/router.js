@@ -21,7 +21,7 @@ module.exports = Support.SwappingRouter.extend({
         'users/:id': 'users',
         'upload': 'upload',
         'pairing': 'pairing',
-        'browser': 'browser',
+        'browser/:token': 'browser',
         'beam/:id': 'beam'
     },
     
@@ -49,8 +49,8 @@ module.exports = Support.SwappingRouter.extend({
     	this.swap(new PairingView());
     },
     
-    browser: function() {
-    	this.swap(new BrowserView());
+    browser: function(token) {
+    	this.swap(new BrowserView({token: token}));
     },
 
     beam: function(id) {
