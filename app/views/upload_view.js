@@ -1,6 +1,6 @@
 var View     	= require('./view')
   , template 	= require('./templates/upload')
-  , Photo	 	= require('../models/photo')
+  , Content	 	= require('../models/content_model')
   , File 	 	= require('../models/file')
   , Application = require('application')
 
