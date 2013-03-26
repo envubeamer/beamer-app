@@ -20,7 +20,6 @@
 		</script>
 
 
-
 <script src="https://apis.google.com/js/plus.js"></script>
 <script src="https://apis.google.com/js/client:plus.js"></script>
 <script src="https://apis.google.com/js/plus.js?onload=OnLoadCallback"></script>
@@ -60,13 +59,18 @@
 </button>
 
 
-      	<input type="text" id="share-url" readonly="" spellcheck="false" class="url-field"></input type="text">
-	    
+<script type="text/javascript">
+    function select_all(obj) {
+        var text_val=eval(obj);
+        text_val.focus();
+        text_val.select();
+        if (!document.all) return; // IE only
+        r = text_val.createTextRange();
+        r.execCommand('copy');
+    }
+</script>
+<input value={{shareurl}}
+ onclick="select_all(this)" name="url" type="text" />
+
+
 	    <a class="btn btn-primary btn-block" id="browse-content" href="#">Browse Content</a>
-	</div>
-
-	
-
-
-
-</div>
