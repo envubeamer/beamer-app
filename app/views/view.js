@@ -21,9 +21,9 @@ module.exports = Support.CompositeView.extend({
     afterRender: function(){},
     
     isAuthenticated: function() {
-    	var sessionToken = localStorage.getItem('sessionToken');
+    	var sessionToken = Application.sessionToken;
     	if (Application.session != null && sessionToken != null && 
-    			Application.session.get('sessionToken') == localStorage.getItem('sessionToken')) {
+    			Application.session.get('sessionToken') == Application.sessionToken) {
     		console.log('User is authenticated');
     	} else {
 			console.log('User is not authenticated');
@@ -32,7 +32,7 @@ module.exports = Support.CompositeView.extend({
     },
     
     logout: function() {
-    	var sessionToken = localStorage.getItem('sessionToken');
+    	var sessionToken = Application.sessionToken;
 	  	if (sessionToken != null && Application.session) {
 	  		var url = Application.config.apiUrl + "/v1/session";
 	  		Application.session.destroy({
@@ -40,7 +40,7 @@ module.exports = Support.CompositeView.extend({
 	  			success: function(model, response, options) {
 	  				console.log('User successfully logged out');
 	  				Application.router.navigate('', {trigger: true});
-	  				localStorage.removeItem('sessionToken');
+	  				Application.sessionToken = null;
 	  				localStorage.removeItem('username');
 	  			},
 	  			error: function(model, xhr, options) {

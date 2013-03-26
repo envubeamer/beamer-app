@@ -85,6 +85,8 @@ module.exports = View.extend({
     updateViewCounter: function(results){
         var model = results.at(0);
 
+        console.log( model.get("creator") );
+
         var data = {
             "$inc": {
                 "views": 1
