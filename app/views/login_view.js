@@ -12,7 +12,7 @@ module.exports = View.extend({
 	},
 	
 	initialize: function() {
-		this.model = new Session();
+		//this.model = new Session();
 	},
 	
 	authenticateUser: function(event) {
@@ -21,7 +21,8 @@ module.exports = View.extend({
 		// Do not trigger the default action of the event
 		event.preventDefault();
 		
-		this.model.save({
+		Application.session = new Session();
+		Application.session.save({
 			username: this.$("#username").val(),
 			password: this.$("#password").val()
 		},

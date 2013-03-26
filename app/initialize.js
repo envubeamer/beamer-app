@@ -13,14 +13,14 @@ $(function() {
 	
 	$(document).ajaxError(function (exception, xhr, options) {
         if (xhr.status === 0) {
-            alert('No network connectivity.');
+            console.log('No network connectivity.');
         } else if (exception === 'timeout') {
-            alert('Request timed out.');
+            console.log('Request timed out.');
         } else if (exception === 'abort') {
-            alert('Ajax request aborted.');
+            console.log('Ajax request aborted.');
         } else {
         	var message = 'HTTP status code:' + xhr.status + '\n Error info:' + xhr.responseText;
-            alert(message.substr(0, 300));
+            console.log(message.substr(0, 300));
         }
     });
 

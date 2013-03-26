@@ -12,6 +12,8 @@ module.exports = View.extend({
 	},
 	
 	initialize: function(options) {
+		// Only let authenticated users access this view
+    	View.prototype.isAuthenticated.apply(this);
 		this.token = options.token;
 		this.collection = new ContentCollection();
     	this.collection.on('reset', this.render, this);
