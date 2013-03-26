@@ -78,7 +78,7 @@ module.exports = View.extend({
 				                id: instance.getCurrentImage().metaData.id
 				            },
 						});
-						alert('Shared ' + instance.getCurrentImage().src);
+						alert('Photo shared!');
 					}
 				}
 			});
