@@ -1,5 +1,4 @@
 var Application 	 = require('application')
-  , HomeView 		 = require('views/home_view')
   , RegistrationView = require('views/registration_view')
   , LoginView 		 = require('views/login_view')
   , UserHomeView 	 = require('views/user_home_view')
@@ -15,7 +14,7 @@ module.exports = Support.SwappingRouter.extend({
     },
 	
     routes: {
-    	'': 'home',
+    	'': 'login',
         'registration': 'registration',
         'login': 'login',
         'users/:id': 'users',
