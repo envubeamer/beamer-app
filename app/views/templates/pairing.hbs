@@ -1,36 +1,19 @@
-<div class="row-fluid">
-	<div class="span12">
-		<div class="page-header">
-			<h1>Share content stream to as you like!</h1>
-		</div>
-
-	    This many viewers: {{viewcount}}
-
-
-	    <div id="qr-code"></div>
-
-	<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=223304811145016";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-
-
-		<div class="fb-send" data-href={{shareurl}}></div>
-		</script>
-
-      	<input type="text" id="share-url" readonly="" spellcheck="false" class="url-field"></input type="text">
-
-	</div>
-
 <script src="https://apis.google.com/js/plus.js"></script>
 <script src="https://apis.google.com/js/client:plus.js"></script>
 <script src="https://apis.google.com/js/plus.js?onload=OnLoadCallback"></script>
 
-	  <!-- Place this asynchronous JavaScript just before your </body> tag -->
+<script type="text/javascript">
+    function select_all(obj) {
+        var text_val=eval(obj);
+        text_val.focus();
+        text_val.select();
+        if (!document.all) return; // IE only
+        r = text_val.createTextRange();
+        r.execCommand('copy');
+    }
+</script>
+
+
   <script type="text/javascript">
   (function() {
     var po = document.createElement('script');
@@ -51,32 +34,54 @@
   }
   </script>
 
-<!-- Place the tag where you want the button to render -->
-<button
-  class="g-interactivepost"
-  data-contenturl={{shareurl}}
-  data-contentdeeplinkid="/pages"
-  data-clientid="831145944164-j9fd0fscdv086mrjksadf947uiatuk3o.apps.googleusercontent.com"
-  data-cookiepolicy="single_host_origin"
-  data-prefilltext={{shareurl}}
-  data-calltoactionurl={{shareurl}}
-  data-calltoactiondeeplinkid="/pages/create">
-  Google+
-</button>
+
+<div class="row-fluid">
+	<div class="span12">
+		<div class="page-header">
+			<h1>Share beam handle <small>( {{viewcount}} viewers )</small></h1>
+		</div>
 
 
-<script type="text/javascript">
-    function select_all(obj) {
-        var text_val=eval(obj);
-        text_val.focus();
-        text_val.select();
-        if (!document.all) return; // IE only
-        r = text_val.createTextRange();
-        r.execCommand('copy');
-    }
-</script>
-<input value={{shareurl}}
- onclick="select_all(this)" name="url" type="text" />
+      	<input type="text" id="share-url" class="pairing-url-field" onclick="select_all(this)" readonly="" spellcheck="false"></input type="text">
 
 
-	    <a class="btn btn-primary btn-block" id="browse-content" href="#">Browse Content</a>
+	    <div id="qr-code" class="" >
+	    </div>
+
+
+
+	<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=223304811145016";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
+
+		<div class="fb-send btn" data-href={{shareurl}}></div>
+		</script>
+	</div>
+
+
+
+
+	<button
+	  class="btn pairing-g-post"
+	  data-contenturl={{shareurl}}
+	  data-contentdeeplinkid="/pages"
+	  data-clientid="831145944164-j9fd0fscdv086mrjksadf947uiatuk3o.apps.googleusercontent.com"
+	  data-cookiepolicy="single_host_origin"
+	  data-prefilltext={{shareurl}}
+	  data-calltoactionurl={{shareurl}}
+	  data-calltoactiondeeplinkid="/pages/create">
+	  Google+
+	</button>
+
+
+	<a class="btn btn-primary btn-block" id="browse-content" href="#">Next</a>
+
+</div>
+
+
