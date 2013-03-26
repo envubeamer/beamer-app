@@ -13,7 +13,7 @@ module.exports = View.extend({
 	},
 	
 	initialize: function() {
-		this.model = new Content();
+		
 	},
 	
 	afterRender: function() {
@@ -21,6 +21,7 @@ module.exports = View.extend({
 	},
 	
 	onFileUpload: function(e) {
+        this.model = new Content();
         this.fileModel = new File();
 
         var self = this;
