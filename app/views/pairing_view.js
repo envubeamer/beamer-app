@@ -15,6 +15,8 @@ module.exports = View.extend({
     },
 
     initialize: function() {
+		// Only let authenticated users access this view
+    	View.prototype.isAuthenticated.apply(this);
     	this.token = (Math.random() * Math.random()).toString(36).substr(2,26);
 		shareUrl = 'http://envu-beamer-app.herokuapp.com/' + '#beam/' + this.token;
         viewCount = 0;

@@ -13,7 +13,8 @@ module.exports = View.extend({
 	},
 	
 	initialize: function() {
-		
+		// Only let authenticated users access this view
+    	View.prototype.isAuthenticated.apply(this);
 	},
 	
 	afterRender: function() {

@@ -7,11 +7,12 @@ module.exports = View.extend({
     template: template,
     
     initialize: function() {
-    	//this.model = new User();
+		// Only let authenticated users access this view
+    	View.prototype.isAuthenticated.apply(this);
     },
     
     getRenderData: function() {
-    	var data = {'username': 'Username'};
+    	var data = {'username': Application.session.get('user').get('username')};
     	
     	return data;
     },
@@ -20,11 +21,11 @@ module.exports = View.extend({
     	"click a#upload-content": "uploadContent",
     	//"click a#browse-photos": "browsePhotos",
     	"click a#share-content": "shareContent",
+    	"click a#logout": "logout",
     },
     
     uploadContent: function(event) {
     	console.log('Clicked upload content');
-    	console.log(localStorage.getItem('session'));
     	
     	// Do not trigger the default action of the event
 		event.preventDefault();
@@ -57,6 +58,9 @@ module.exports = View.extend({
         // Do not trigger the default action of the event
         event.preventDefault();
         
-        Application.router.navigate('home', {trigger: true});
+        // Log the user out
+    	View.prototype.logout.apply(this);
+        
+        //Application.router.navigate('home', {trigger: true});
     }
 })
