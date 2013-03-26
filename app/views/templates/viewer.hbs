@@ -1,13 +1,10 @@
 <div class="row-fluid">
 	<div class="span12">
 		<div class="page-header">
-			{{#if beamed}}
-			<h1>Beamed!</h1>
-			{{else}}
-			<h1>Beaming in progress...</h1>
-			{{/if}}
+			<h1>{{senderUserName}} is sharing!</h1>
 		</div>
 
-		<img src="{{imageUrl}}" class="hidden" /><i class="icon-spinner icon-spin" style="font-size:56px"></i>
+		<img src="{{imageUrl}}" class="hidden" />
+		<i class="icon-spinner icon-spin" style="font-size:56px"></i>
 	</div>
 </div>

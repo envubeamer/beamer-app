@@ -4,6 +4,9 @@
 			<h1>Share content stream to as you like!</h1>
 		</div>
 
+	    This many viewers: {{viewcount}}
+
+
 	    <div id="qr-code"></div>
 
 	<div id="fb-root"></div>
@@ -20,12 +23,60 @@
 		</script>
 
       	<input type="text" id="share-url" readonly="" spellcheck="false" class="url-field"></input type="text">
-	    
-	    <a class="btn btn-primary btn-block" id="browse-content" href="#">Browse Content</a>
+
 	</div>
 
-	
+<script src="https://apis.google.com/js/plus.js"></script>
+<script src="https://apis.google.com/js/client:plus.js"></script>
+<script src="https://apis.google.com/js/plus.js?onload=OnLoadCallback"></script>
+
+	  <!-- Place this asynchronous JavaScript just before your </body> tag -->
+  <script type="text/javascript">
+  (function() {
+    var po = document.createElement('script');
+    po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/client:plusone.js?onload=render';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(po, s);
+  })();
+
+  function render() {
+    gapi.signin.render('customBtn', {
+      //'callback': 'signinCallback',
+      'clientid': '831145944164-j9fd0fscdv086mrjksadf947uiatuk3o.apps.googleusercontent.com',
+      'cookiepolicy': 'single_host_origin',
+      'requestvisibleactions': 'http://schemas.google.com/AddActivity',
+      'scope': 'https://www.googleapis.com/auth/plus.login'
+    });
+  }
+  </script>
+
+<!-- Place the tag where you want the button to render -->
+<button
+  class="g-interactivepost"
+  data-contenturl={{shareurl}}
+  data-contentdeeplinkid="/pages"
+  data-clientid="831145944164-j9fd0fscdv086mrjksadf947uiatuk3o.apps.googleusercontent.com"
+  data-cookiepolicy="single_host_origin"
+  data-prefilltext={{shareurl}}
+  data-calltoactionurl={{shareurl}}
+  data-calltoactiondeeplinkid="/pages/create">
+  Google+
+</button>
 
 
+<script type="text/javascript">
+    function select_all(obj) {
+        var text_val=eval(obj);
+        text_val.focus();
+        text_val.select();
+        if (!document.all) return; // IE only
+        r = text_val.createTextRange();
+        r.execCommand('copy');
+    }
+</script>
+<input value={{shareurl}}
+ onclick="select_all(this)" name="url" type="text" />
 
-</div>
+
+	    <a class="btn btn-primary btn-block" id="browse-content" href="#">Browse Content</a>
