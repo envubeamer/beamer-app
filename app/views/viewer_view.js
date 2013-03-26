@@ -60,12 +60,17 @@ module.exports = View.extend({
             token: this.token
         };
 
+        var sharingInclude = {
+            creator: {}
+        };
+
         var self = this;
         var sharingFetchParams = {
             reset: true,
             data: {
                 q: JSON.stringify(sharingQuery),
-                limit: 10
+                limit: 10,
+                include: JSON.stringify(sharingInclude)
             },
 
             success: function(results){

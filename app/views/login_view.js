@@ -13,6 +13,7 @@ module.exports = View.extend({
 	
 	initialize: function() {
 		//this.model = new Session();
+		localStorage.removeItem('sessionToken');
 	},
 	
 	authenticateUser: function(event) {
