@@ -1,7 +1,7 @@
 var View     = require('./view')
   , template = require('./templates/viewer')
   , Content  = require('../models/content_model')
-  , ContentCollection = require('../models/content_collection')
+  , SharedContentCollection = require('../models/sharedcontent_collection')
   , Application = require('application')
 
 module.exports = View.extend({
@@ -11,22 +11,33 @@ module.exports = View.extend({
     initialize: function(options) {
 
         this.parseData = _.bind(this.parseData, this)
-    	this.collection = new Content();
+    	this.collection = new SharedContentCollection();
     	this.collection.on("reset", this.parseData, this);
 
     	var query = {
     		token: options.photoToken
     	};
+
+        var include = {
+            creator: {},
+            content: {
+                 include: { 
+                    file:{} 
+                }
+            }
+        };
+
+        var sort = [
+            {"sortBy": "createdAt", "direction": "desc"}
+        ];
+
     	var fetchParams = {
     		reset: true,
     		data: {
     			q: JSON.stringify(query),
     			limit: 10,
-    			include: {
-    				file: {
-    					objectType: "files"
-    				}
-    			}
+    			include: JSON.stringify(include),
+                sort: JSON.stringify(sort)
     		}
     	}
     	this.collection.fetch(fetchParams);
@@ -42,8 +53,8 @@ module.exports = View.extend({
         if(model) {
             var newViewData = {imageUrl: "", beamed: true}
 
-            if(model.get("file").variants.large.status == "complete") {
-                newViewData["imageUrl"] = Application.config.apiUrl + model.get("file").variants.large.url;    
+            if(model.get("content").file.variants.large.status == "complete") {
+                newViewData["imageUrl"] = Application.config.apiUrl + model.get("content").file.variants.large.url;    
                
                 if  (this.viewData["imageUrl"] != newViewData["imageUrl"]){
                     this.viewData = newViewData;
