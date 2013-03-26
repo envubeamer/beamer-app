@@ -8,11 +8,45 @@ body {
 }
 
 /** For Photo Swipe's custom button **/
-div.beamer-toolbar-share
-{
+div.beamer-toolbar-share {
 	cursor: pointer;
 	display: table-cell;
 }
+
+div.ps-toolbar div.beamer-toolbar-share div.ps-toolbar-content {
+	background-image: url(../images/shareFull.png);
+	background-position: center center;
+}
+
+div.ps-toolbar div.beamer-toolbar-share-disabled div.ps-toolbar-content {
+	background-image: url(../images/shareHalf.png);
+	background-position: center center;
+}
+
+/* Hi-res display (PhotoSwipe) */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-moz-min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 240dpi)
+{
+	div.ps-toolbar div.beamer-toolbar-share div.ps-toolbar-content {
+		-moz-background-size: 176px 88px;
+		-o-background-size: 176px 88px;
+		-webkit-background-size: 176px 88px;
+		background-size: 176px 88px;
+		background-image: url(../images/sharex2Full.png);
+		background-position: center center;
+	}
+	
+	div.ps-toolbar div.beamer-toolbar-share-disabled div.ps-toolbar-content	{
+		-moz-background-size: 176px 88px;
+		-o-background-size: 176px 88px;
+		-webkit-background-size: 176px 88px;
+		background-size: 176px 88px;
+		background-image: url(../images/sharex2Half.png);
+		background-position: center center;
+	}
+}
+
 
 
 /** Fixing non-sensical padding on body **/
