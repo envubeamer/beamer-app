@@ -48,6 +48,7 @@ module.exports = View.extend({
 		if (this.$("#gallery li").length > 0) {
 			var self = this;
 			var instance = this.$("#gallery a").photoSwipe({
+				captionAndToolbarAutoHideDelay: 0,
 				getToolbar: function() {
 					return '<div class="ps-toolbar-close"><div class="ps-toolbar-content"></div></div><div class="ps-toolbar-play"><div class="ps-toolbar-content"></div></div><div class="ps-toolbar-previous"><div class="ps-toolbar-content"></div></div><div class="ps-toolbar-next"><div class="ps-toolbar-content"></div></div><div class="beamer-toolbar-share"><div class="ps-toolbar-content"></div></div>';
 				},
