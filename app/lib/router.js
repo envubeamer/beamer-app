@@ -14,7 +14,7 @@ module.exports = Support.SwappingRouter.extend({
 		this.el = $('#main-content');
 
 		Application.session = new Session();
-		var sessionToken = localStorage.getItem('sessionToken');
+		var sessionToken = Application.sessionToken;
 	  	if (sessionToken != null) {
 	  		var url = Application.config.apiUrl + "/v1/session";
 	  		Application.session.fetch({

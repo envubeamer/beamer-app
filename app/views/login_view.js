@@ -12,8 +12,7 @@ module.exports = View.extend({
 	},
 	
 	initialize: function() {
-		//this.model = new Session();
-		localStorage.removeItem('sessionToken');
+		Application.sessionToken = null;
 	},
 	
 	authenticateUser: function(event) {
@@ -31,7 +30,7 @@ module.exports = View.extend({
 			success: function(model, response, options) {
 				console.log("User authenticated successfully!");
 				// Store session token in local storage
-				localStorage.setItem('sessionToken', model.get('sessionToken'));
+				Application.sessionToken = model.get('sessionToken');
 				Application.router.navigate('users/' + model.get('user').get('id'), {trigger: true});
 			},
 			error: function(model, xhr, options) {
